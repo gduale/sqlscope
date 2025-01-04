@@ -2,7 +2,7 @@
 
 SQLScope is an open-source tool designed to provide insightful statistics about SQL servers on a dashboard.
 
-![SQLScope logo](logo.png "SQLScope logo")
+![SQLScope logo](img/logo.png "SQLScope logo")
 
 It currently supports (because tested with):
 
@@ -12,9 +12,9 @@ It currently supports (because tested with):
 
 Below is a preview of the dashboard:
 
-![SQLScope main dashboard](screenshot.png "SQLScope main dashboard")
+![SQLScope main dashboard](img/screenshot.png "SQLScope main dashboard")
 
-![SQLScope engine parameters](screenshot2.png "SQLScope engine parameters")
+![SQLScope engine parameters](img/screenshot2.png "SQLScope engine parameters")
 
 SQLScope is built using the Django framework and requires a PostgreSQL database to operate.
 
@@ -177,7 +177,7 @@ To configure SQLScope, you can access the admin interface at `http://<Your_IP>/a
 
 The only thing you need to setup is a new server, like this:
 
-![SQLScope server creation](screenshot3.png "SQLScope server creation")
+![SQLScope server creation](img/screenshot3.png "SQLScope server creation")
 
 ## Update the dashboard
 
