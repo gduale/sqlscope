@@ -18,8 +18,8 @@ SQLScope is built using the Django framework and requires a PostgreSQL database 
 
 For optimal deployment, you might consider setting up Nginx as a reverse proxy to handle FastCGI requests efficiently and SSL termination.
 
-# Setup
-## System
+# Setup SQLScope
+## Operating System
 
 On Debian or Debian-like server:
 ```
@@ -67,7 +67,7 @@ ALTER DATABASE sqlscope_db OWNER TO sqlscope;
 ```
 
 
-# Start the app to create the wsgi file
+## Start the app to test it
 ```
 cd /opt/sqlscope/sqlscope
 python manage.py makemigrations
@@ -82,16 +82,16 @@ You can verify if everything is working well, on: http://localhost:8000
 You can kill the command with *ctrl+c.*
 
 
-# Start the app with systemd
+## Start the app with systemd
 
-## User creation and permissions
+### User creation and permissions
 ```
 useradd -r -s /usr/sbin/nologin -M sqlscope
 usermod -aG www-data sqlscope
 chown -R sqlscope:www-data /opt/venv-python3-django4 /opt/sqlscope
 ```
 
-## Gunicorn service file
+### Gunicorn service file
 File `/etc/systemd/system/gunicorn.service`
 ```
 [Unit]
@@ -113,7 +113,7 @@ ExecStart=/opt/venv-python3-django4/bin/gunicorn \
 WantedBy=multi-user.target
 ```
 
-## Gunicorn socket file
+### Gunicorn socket file
 File `/etc/systemd/system/gunicorn.socket`
 ```
 [Unit]
@@ -126,14 +126,14 @@ ListenStream=/run/gunicorn.sock
 WantedBy=sockets.target
 ```
 
-## Enable systemd files
+### Enable systemd files
 ```
 systemctl daemon-reload
 systemctl start gunicorn.socket
 systemctl enable gunicorn.socket
 ```
 
-# Configure Nginx
+## Configure Nginx
 
 File `/etc/nginx/sites-available/sqlscope`
 ```
@@ -155,7 +155,7 @@ server {
 
 *Replace <Your_IP> with your actual IP.*
 
-## Enable the new vhost and restart Nginx
+### Enable the new vhost and restart Nginx
 ```
 ln -s /etc/nginx/sites-available/sqlscope /etc/nginx/sites-enabled/sqlscope
 systemctl restart nginx
@@ -163,7 +163,7 @@ systemctl restart nginx
 
 You can now, access to SQLScope at `http://<Your_IP>/`.
 
-# SQLScope configuration
+## SQLScope configuration
 
 Finish the Django configuration:
 ```
@@ -177,7 +177,7 @@ The only thing you need to setup is a new server, like this:
 
 ![SQLScope server creation](screenshot3.png "SQLScope server creation")
 
-# Update the dashboard
+## Update the dashboard
 
 The dashboard is updated automatically with the latest information from the servers when you run the script `sqlscope_cron.py`
 
