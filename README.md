@@ -2,6 +2,8 @@
 
 SQLScope is an open-source tool designed to provide insightful statistics about SQL servers on a dashboard.
 
+![SQLScope logo](logo.png "SQLScope logo")
+
 It currently supports (because tested with):
 
  - MySQL 5.7
