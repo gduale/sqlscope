@@ -89,7 +89,7 @@ You can kill the command with *ctrl+c.*
 
 ### User creation and permissions
 ```
-useradd -r -s /usr/sbin/nologin -M sqlscope
+useradd -m sqlscope
 usermod -aG www-data sqlscope
 chown -R sqlscope:www-data /opt/venv-python3-django4 /opt/sqlscope
 ```
@@ -190,3 +190,19 @@ python sqlscope_cron.py
 ```
 
 Then, refresh the dashboard at `http://<Your_IP>/`
+
+## Automatically update the dashboard
+
+With the sqlscope user, you can add a little script like this:
+
+File `/home/sqlscope/sqlscope-cron.sh`
+
+```
+source /opt/venv-python3-django4/bin/activate
+python /opt/sqlscope/sqlscope/sqlscope_cron.py
+```
+
+And run it in a cron job every 5 minutes:
+```
+*/5 * * * * /bin/bash /home/sqlscope/sqlscope-cron.sh
+```
