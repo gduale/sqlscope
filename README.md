@@ -1,10 +1,9 @@
 # Introduction
+![SQLScope logo](img/logo.png "SQLScope logo")
 
 SQLScope is an open-source tool designed to provide insightful statistics about SQL servers on a dashboard.
 
 The main goal is to check if our servers are up and if the server is a replica, ensuring that replication is working.
-
-![SQLScope logo](img/logo.png "SQLScope logo")
 
 It currently supports (because tested with):
 
