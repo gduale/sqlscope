@@ -66,6 +66,7 @@ ALTER ROLE sqlscope SET client_encoding TO 'utf8';
 ALTER ROLE sqlscope SET default_transaction_isolation TO 'read committed';
 ALTER ROLE sqlscope SET timezone TO 'UTC';
 GRANT ALL PRIVILEGES ON DATABASE sqlscope_db TO sqlscope;
+GRANT pg_read_all_settings TO sqlscope;
 ALTER DATABASE sqlscope_db OWNER TO sqlscope;
 ```
 
