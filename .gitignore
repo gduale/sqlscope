@@ -69,6 +69,7 @@ venv/
 ENV/ 
 env.bak/ 
 venv.bak/ 
+venv-python3-django4/
 
 # mypy 
 .mypy_cache/ 
