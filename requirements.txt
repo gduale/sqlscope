@@ -1,0 +1,6 @@
+Django==4.2.16
+cryptography
+django_cryptography
+psycopg2-binary
+gunicorn
+mysql-connector-python
