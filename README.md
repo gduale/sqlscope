@@ -17,7 +17,7 @@ Below is a preview of the dashboard:
 
 ![SQLScope engine parameters](img/screenshot2.png "SQLScope engine parameters")
 
-SQLScope is built using the Django framework and requires a PostgreSQL database to operate.
+SQLScope is built using the Django framework. You can use the embeded SQLite database to run it or, setup a PostgreSQL database.
 
 For optimal deployment, you might consider setting up Nginx as a reverse proxy to handle FastCGI requests efficiently and SSL termination.
 
@@ -41,6 +41,8 @@ pip install -r requirements.txt
 ```
 
 ## PostgreSQL configuration
+
+If you want to use a PostgreSQL database, follow the next steps, else you can jump to "Start the app to test it".
 
 Add a dedicated user for the application in the PosgtreSQL configuration file.
 
