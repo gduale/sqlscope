@@ -66,8 +66,9 @@
         <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden mb-6">
             <thead class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
                 <tr>
-                    <th class="py-3 px-6 text-left">Server</th>
-                    <th class="py-3 px-6 text-left">{{ param.fk_server.dn_or_ip }}</th>
+                    <th class="py-3 px-6 text-left" colspan="2"><span>{{ param.fk_server.dn_or_ip }}</span> <span
+                            class="font-normal"><i>(at {{ param.fk_server.creation_date }})</i></span>
+                    </th>
                 </tr>
             </thead>
             <tbody class="text-gray-600 text-sm font-light">
