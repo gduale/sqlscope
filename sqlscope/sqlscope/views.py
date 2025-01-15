@@ -55,6 +55,7 @@ def engine_parameters(request):
     mysql_parameters = (
         Engine_mysql_parameter.objects.filter(
             fk_server__engine_type="MySQL",
+            fk_server__enabled=True,
             id=Subquery(latest_mysql_parameter.values("id")[:1]),
         )
         .annotate(
@@ -73,6 +74,7 @@ def engine_parameters(request):
     postgresql_parameters = (
         Engine_postgresql_parameter.objects.filter(
             fk_server__engine_type="PostgreSQL",
+            fk_server__enabled=True,
             id=Subquery(latest_postgresql_parameter.values("id")[:1]),
         )
         .annotate(
