@@ -4,24 +4,34 @@
 
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
     {% for server, databases in server_databases.items %}
-    <div class="bg-white shadow-md rounded-lg overflow-hidden">
-        <div class="bg-gray-200 text-gray-600 px-6 py-3">
-            <h2 class="text-lg"><span class="font-semibold">Server: {{ server.dn_or_ip }}</span> <span
-                    class="font-normal"><i>(at {{ databases.0.creation_date }})</i></span></h2>
-        </div>
-        <div class="p-4">
-            {% if databases %}
-            <div class="grid grid-cols-1 gap-2">
+    <div class="overflow-x-auto">
+        <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+            <thead class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                <tr>
+                    <th class="py-3 px-6 text-left" colspan="2">
+                        <span class="font-semibold">{{ server.dn_or_ip }}</span>
+                        <span class="font-normal"><i>(at {{ databases.0.creation_date }})</i></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                {% if databases %}
                 {% for database in databases %}
-                <div class="border border-gray-200 rounded p-3 hover:bg-gray-50">
-                    <span class="font-medium">{{ database.database_name }}</span>
-                </div>
+                <tr class="border-b border-gray-200 hover:bg-gray-50">
+                    <td class="py-3 px-6">
+                        {{ database.database_name }}
+                    </td>
+                </tr>
                 {% endfor %}
-            </div>
-            {% else %}
-            <p class="text-gray-500 italic">No databases found for this server</p>
-            {% endif %}
-        </div>
+                {% else %}
+                <tr>
+                    <td class="py-3 px-6 text-gray-500 italic">
+                        No databases found for this server
+                    </td>
+                </tr>
+                {% endif %}
+            </tbody>
+        </table>
     </div>
     {% empty %}
     <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 col-span-2">
