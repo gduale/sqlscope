@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-4xl font-bold text-gray-900 mb-4">Databases list</h1>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {% for server, databases in server_databases.items %}
+    <div class="bg-white shadow-md rounded-lg overflow-hidden">
+        <div class="bg-gray-200 text-gray-600 px-6 py-3">
+            <h2 class="text-lg"><span class="font-semibold">Server: {{ server.dn_or_ip }}</span> <span
+                    class="font-normal"><i>(at {{ databases.0.creation_date }})</i></span></h2>
+        </div>
+        <div class="p-4">
+            {% if databases %}
+            <div class="grid grid-cols-1 gap-2">
+                {% for database in databases %}
+                <div class="border border-gray-200 rounded p-3 hover:bg-gray-50">
+                    <span class="font-medium">{{ database.database_name }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-gray-500 italic">No databases found for this server</p>
+            {% endif %}
+        </div>
+    </div>
+    {% empty %}
+    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 col-span-2">
+        <div class="flex">
+            <div class="flex-shrink-0">
+                <svg class="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                    fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z"
+                        clip-rule="evenodd" />
+                </svg>
+            </div>
+            <div class="ml-3">
+                <p class="text-sm text-yellow-700">
+                    No servers with databases found
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

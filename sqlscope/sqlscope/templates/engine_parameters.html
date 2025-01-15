@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-4xl font-bold text-gray-900 mb-4">Engine parameters</h1>
+
+<div class="space-y-8">
+    <!-- MySQL Servers -->
+    <div>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">MySQL Servers</h2>
+        {% for param in mysql_parameters %}
+        <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden mb-6">
+            <thead class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                <tr>
+                    <th class="py-3 px-6 text-left" colspan="2"><span>{{ param.fk_server.dn_or_ip }}</span> <span
+                            class="font-normal"><i>(at {{ param.fk_server.creation_date }})</i></span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Engine version</td>
+                    <td>{{ param.latest_engine_version }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Data Directory</td>
+                    <td>{{ param.datadir }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Temp Directory</td>
+                    <td>{{ param.tmpdir }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Max Connections</td>
+                    <td>{{ param.max_connections }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">InnoDB Data File Path</td>
+                    <td>{{ param.innodb_data_file_path }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">InnoDB Open Files</td>
+                    <td>{{ param.innodb_open_files }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">InnoDB Page Size</td>
+                    <td>{{ param.innodb_page_size }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">InnoDB Read Only</td>
+                    <td>{{ param.innodb_read_only }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left font-bold">Parameters received at</td>
+                    <td>{{ param.creation_date }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% empty %}
+        <p class="text-gray-500 italic">No MySQL servers found</p>
+        {% endfor %}
+    </div>
+
+    <!-- PostgreSQL Servers -->
+    <div>
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">PostgreSQL Servers</h2>
+        {% for param in postgresql_parameters %}
+        <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden mb-6">
+            <thead class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                <tr>
+                    <th class="py-3 px-6 text-left">Server</th>
+                    <th class="py-3 px-6 text-left">{{ param.fk_server.dn_or_ip }}</th>
+                </tr>
+            </thead>
+            <tbody class="text-gray-600 text-sm font-light">
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Engine version</td>
+                    <td>{{ param.latest_engine_version }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Data Directory</td>
+                    <td>{{ param.data_directory }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Max Connections</td>
+                    <td>{{ param.max_connections }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Shared Buffers</td>
+                    <td>{{ param.shared_buffers }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Work Memory</td>
+                    <td>{{ param.work_mem }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Maintenance Work Memory</td>
+                    <td>{{ param.maintenance_work_mem }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Effective Cache Size</td>
+                    <td>{{ param.effective_cache_size }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Max WAL Size</td>
+                    <td>{{ param.max_wal_size }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left">Checkpoint Timeout</td>
+                    <td>{{ param.checkpoint_timeout }}</td>
+                </tr>
+                <tr class="border-b border-gray-200 hover:bg-gray-100">
+                    <td class="py-3 px-6 text-left font-bold">Parameters received at</td>
+                    <td>{{ param.creation_date }}</td>
+                </tr>
+            </tbody>
+        </table>
+        {% empty %}
+        <p class="text-gray-500 italic">No PostgreSQL servers found</p>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
