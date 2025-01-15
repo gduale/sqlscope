@@ -40,7 +40,7 @@ cd sqlscope
 pip install -r requirements.txt
 ```
 
-## PostgreSQL configuration
+## PostgreSQL configuration (optional)
 
 If you want to use a PostgreSQL database, follow the next steps, else you can jump to "Start the app to test it".
 
