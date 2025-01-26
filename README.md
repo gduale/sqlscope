@@ -21,7 +21,22 @@ SQLScope is built using the Django framework. You can use the embeded SQLite dat
 
 For optimal deployment, you might consider setting up Nginx as a reverse proxy to handle FastCGI requests efficiently and SSL termination.
 
-# Setup SQLScope
+# Quick setup using Docker
+
+On a machine with Docker already installed, you can start SQLScope with:
+```bash
+docker run -p8000:8000 gduale/sqlscope:v0.1
+```
+
+You can now see the SQLScope dashboard at http://127.0.0.1:8000
+
+To access the admin interface, go to http://127.0.0.1:8000/admin
+
+ - user: admin
+ - pass: changeme
+
+# Classic setup on a Linux server
+
 ## Operating System
 
 On Debian or Debian-like server:
